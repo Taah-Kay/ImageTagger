@@ -19,7 +19,7 @@ if uploaded_file is not None:
             img = Image.open(file_path)
             try:
                 genai.configure(api_key=API_KEY)
-                model = genai.GenerativeModel('gemini-pro-vision')
+                model = genai.GenerativeModel('gemini-1.5-flash')
                 caption = model.generate_content(["Write a caption for the image in english",img])
                 tags=model.generate_content(["Generate 5 hash tags for the image in a line in english",img])
                 st.image(img, caption=f"Caption: {caption.text}")
@@ -65,8 +65,6 @@ footer="""
         }
     </style>
 
-    <div class="footer">
-        <p>Developed with ❤ by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank">sgvkamalakar</a></p>
-    </div>
+   
 """
 st.markdown(footer,unsafe_allow_html=True)
